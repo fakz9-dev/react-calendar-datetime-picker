@@ -1,167 +1,75 @@
-import jalaali from 'jalaali-js'
 import { IDay } from 'src/type'
 const today = new Date()
-const jalaaliToday = jalaali.toJalaali(today)
 export const LOCAL_CONSTANT = {
-  fa: {
-    NUMBERS: ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
-    WEEK_DAY_SHORT: ['ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
-    MONTHS: [
-      'فروردین',
-      'اردیبهشت',
-      'خرداد',
-      'تیر',
-      'مرداد',
-      'شهریور',
-      'مهر',
-      'آبان',
-      'آذر',
-      'دی',
-      'بهمن',
-      'اسفند'
-    ],
-    WEEK_DAYS: [
-      {
-        name: 'شنبه',
-        short: 'ش'
-      },
-      {
-        name: 'یکشنبه',
-        short: 'ی'
-      },
-      {
-        name: 'دوشنبه',
-        short: 'د'
-      },
-      {
-        name: 'سه شنبه',
-        short: 'س'
-      },
-      {
-        name: 'چهارشنبه',
-        short: 'چ'
-      },
-      {
-        name: 'پنجشنبه',
-        short: 'پ'
-      },
-      {
-        name: 'جمعه',
-        short: 'ج',
-        isWeekend: true
-      }
-    ],
-    YEARS_RANGE_START: jalaaliToday.jy - 100,
-    YEARS_RANGE_END: jalaaliToday.jy + 100,
-    getDay: (date: IDay) => {
-      const convertToGregorian = jalaali.toGregorian(
-        date.year,
-        date.month + 1,
-        date.day
-      )
-      return new Date(
-        convertToGregorian.gy,
-        convertToGregorian.gm - 1,
-        convertToGregorian.gd
-      ).getDay()
-    },
-    // today: () => {
-    //   console.log(jalaali.toJalaali(new Date()))
-    //   const pDate = new PersianDate()
-    //   console.log(pDate)
-    //   return pDate.State.persianAstro
-    // },
-    todayObject: () => {
-      const pDate = jalaali.toJalaali(new Date())
-
-      return {
-        year: pDate.jy,
-        month: pDate.jm - 1,
-        day: pDate.jd
-      }
-    },
-    getDayOfMonth: (date: IDay) => {
-      return jalaali.jalaaliMonthLength(date.year, date.month + 1)
-    },
-    inputPlaceholder: 'انتخاب کنید',
-    clockFromLB: 'از ساعت',
-    clockToLB: 'تا ساعت',
-    nextMonthBtnTL: 'ماه بعد',
-    previousMonthBtnTL: 'ماه قبل',
-    fromLB: 'از',
-    toLB: 'تا',
-    clockLB: 'ساعت',
-    todayBtnTL: 'امروز'
-  },
   en: {
     WEEK_DAY: [
-      'Sunday',
-      'Monday',
-      'Thursday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday'
+      'Воскресенье',
+      'Понедельник',
+      'Вторник',
+      'Среда',
+      'Четверг',
+      'Пятница',
+      'Суббота'
     ],
 
-    WEEK_DAY_SHORT: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    WEEK_DAY_SHORT: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
     MONTHS: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь'
     ],
     MONTHS_SHORT: [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
+      'Янв',
+      'Февр',
+      'Март',
+      'Апр',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Авг',
+      'Сент',
+      'Окт',
+      'Нояб',
+      'Дек'
     ],
     WEEK_DAYS: [
       {
-        name: 'Sunday',
-        short: 'Su',
+        name: 'Воскресенье',
+        short: 'Вс',
         isWeekend: true
       },
       {
-        name: 'Monday',
-        short: 'Mo'
+        name: 'Понедельник',
+        short: 'Пн'
       },
       {
-        name: 'Tuesday',
-        short: 'Tu'
+        name: 'Вторник',
+        short: 'Вт'
       },
       {
-        name: 'Wednesday',
-        short: 'We'
+        name: 'Среда',
+        short: 'Ср'
       },
       {
-        name: 'Thursday',
-        short: 'Th'
+        name: 'Четверг',
+        short: 'Чт'
       },
       {
-        name: 'Friday',
-        short: 'Fr'
+        name: 'Пятница',
+        short: 'Пт'
       },
       {
-        name: 'Saturday',
-        short: 'Sa',
+        name: 'Суббота',
+        short: 'Сб',
         isWeekend: true
       }
     ],
@@ -185,15 +93,15 @@ export const LOCAL_CONSTANT = {
       return new Date(date.year, date.month, date.day).getDate()
     },
 
-    inputPlaceholder: 'select',
-    clockFromLB: 'from',
-    clockToLB: 'to',
-    nextMonthBtnTL: 'next month',
-    previousMonthBtnTL: 'previous month',
-    fromLB: 'from',
-    toLB: 'to',
-    clockLB: 'clock',
-    todayBtnTL: 'Today'
+    inputPlaceholder: 'Выберите',
+    clockFromLB: 'От',
+    clockToLB: 'До',
+    nextMonthBtnTL: 'Следующий месяц',
+    previousMonthBtnTL: 'Предыдущий месяц',
+    fromLB: 'От',
+    toLB: 'До',
+    clockLB: 'часов',
+    todayBtnTL: 'Сегодня'
   }
 }
 
